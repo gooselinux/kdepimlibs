@@ -1,0 +1,757 @@
+diff -Nur kdepimlibs-4.3.4/akonadi/CMakeLists.txt kdepimlibs-4.3.5/akonadi/CMakeLists.txt
+--- kdepimlibs-4.3.4/akonadi/CMakeLists.txt	2009-07-29 13:09:57.000000000 +0200
++++ kdepimlibs-4.3.5/akonadi/CMakeLists.txt	2010-01-21 21:47:46.000000000 +0100
+@@ -144,11 +144,11 @@
+ target_link_libraries( akonadi-kde ${KDE4_SOLID_LIBS} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY} ${QT_QTSQL_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${AKONADI_COMMON_LIBRARIES} )
+ set( AKONADI_KDE_DEPS ${KDE4_KDEUI_LIBS} ${QT_QTDBUS_LIBRARY} ${QT_QTCORE_LIBRARY} )
+ 
+-if(${KDE_IS_AT_LEAST_42})
++if(KDE_IS_AT_LEAST_42)
+ target_link_libraries( akonadi-kde LINK_INTERFACE_LIBRARIES ${AKONADI_KDE_DEPS})
+-else(${KDE_IS_AT_LEAST_42})
++else(KDE_IS_AT_LEAST_42)
+ target_link_libraries( akonadi-kde ${AKONADI_KDE_DEPS})
+-endif(${KDE_IS_AT_LEAST_42})
++endif(KDE_IS_AT_LEAST_42)
+ 
+ 
+ set_target_properties( akonadi-kde PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+diff -Nur kdepimlibs-4.3.4/kabc/formats/binary.desktop kdepimlibs-4.3.5/kabc/formats/binary.desktop
+--- kdepimlibs-4.3.4/kabc/formats/binary.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kabc/formats/binary.desktop	2010-01-21 21:47:46.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=Binary
+ Name[be]=Двойкавы
+ Name[ca]=Binari
++Name[ca@valencia]=Binari
+ Name[cs]=Binární
+ Name[da]=Binær
+ Name[de]=Binär
+diff -Nur kdepimlibs-4.3.4/kabc/kabc_manager.desktop kdepimlibs-4.3.5/kabc/kabc_manager.desktop
+--- kdepimlibs-4.3.4/kabc/kabc_manager.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kabc/kabc_manager.desktop	2010-01-21 21:47:46.000000000 +0100
+@@ -3,6 +3,7 @@
+ Name=Contacts
+ Name[be]=Кантакты
+ Name[ca]=Contactes
++Name[ca@valencia]=Contactes
+ Name[cs]=Kontakty
+ Name[da]=Kontakter
+ Name[de]=Kontakte
+diff -Nur kdepimlibs-4.3.4/kabc/plugins/dir/dir.desktop kdepimlibs-4.3.5/kabc/plugins/dir/dir.desktop
+--- kdepimlibs-4.3.4/kabc/plugins/dir/dir.desktop	2009-10-30 13:26:48.000000000 +0100
++++ kdepimlibs-4.3.5/kabc/plugins/dir/dir.desktop	2010-01-21 21:47:46.000000000 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Name=Folder
+ Name[ca]=Carpeta
++Name[ca@valencia]=Carpeta
+ Name[cs]=Složka
+ Name[da]=Mappe
+ Name[de]=Ordner
+@@ -37,6 +38,7 @@
+ Name[zh_TW]=資料夾
+ Comment=Provides access to contacts, each stored in a single file, in a given folder. Supports standard VCard file and other formats depending on availability of plugins.
+ Comment[ca]=Proporciona l'accés als contactes, cada un emmagatzemat en un fitxer individual, en una carpeta donada. Accepta els fitxers estàndard VCard i altres formats depenent de la disponibilitat dels connectors.
++Comment[ca@valencia]=Proporciona l'accés als contactes, cada un emmagatzemat en un fitxer individual, en una carpeta donada. Accepta els fitxers estàndard VCard i altres formats depenent de la disponibilitat dels connectors.
+ Comment[cs]=Poskytuje přístup ke kontaktům, každém uloženém v jednom souboru v daném adresáři. Podporuje standardní soubory s vizitkou a jiným formátům podle dostupných modulů.
+ Comment[da]=Giver adgang til kontakter, hver lagret i en enkelt fil, i en given mappe. Understøtter standard VCard-fil og andre formater afhængigt af tilgængeligheden af plugins.
+ Comment[de]=Ermöglicht Zugriff auf Kontakte, die in einzelnen Dateien in einem vorgegebenen Ordner gespeichert sind. Unterstützt Standard-VCard-Dateien und andere Formate abhängig von den verfügbaren Modulen.
+diff -Nur kdepimlibs-4.3.4/kabc/plugins/file/file.desktop kdepimlibs-4.3.5/kabc/plugins/file/file.desktop
+--- kdepimlibs-4.3.4/kabc/plugins/file/file.desktop	2009-11-27 14:00:40.000000000 +0100
++++ kdepimlibs-4.3.5/kabc/plugins/file/file.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=File
+ Name[be]=Файл
+ Name[ca]=Fitxer
++Name[ca@valencia]=Fitxer
+ Name[cs]=Soubor
+ Name[da]=Fil
+ Name[de]=Datei
+@@ -46,6 +47,7 @@
+ Name[zh_TW]=檔案
+ Comment=Provides access to contacts stored in a single local file. Supports standard VCard files and other formats depending on available plugins.
+ Comment[ca]=Proporciona l'accés als contactes emmagatzemats en un fitxer individual. Accepta els fitxers estàndard VCard i altres formats, depenent dels connectors disponibles.
++Comment[ca@valencia]=Proporciona l'accés als contactes emmagatzemats en un fitxer individual. Accepta els fitxers estàndard VCard i altres formats, depenent dels connectors disponibles.
+ Comment[cs]=Poskytuje přístup ke kontaktům uloženým v jednom lokálním souboru. Podporuje standardní soubory s vizitkou a jiným formátům podle dostupných modulů.
+ Comment[da]=Giver adgang til kontakter, hver lagret i en enkelt fil. Understøtter standard VCard-fil og andre formater afhængigt af tilgængelige af plugins.
+ Comment[de]=Ermöglicht Zugriff auf Kontakte, die in einer einzigen Datei lokal gespeichert sind. Unterstützt Standard-VCard-Dateien und andere Formate abhängig von den verfügbaren Modulen.
+diff -Nur kdepimlibs-4.3.4/kabc/plugins/ldapkio/ldapkio.desktop kdepimlibs-4.3.5/kabc/plugins/ldapkio/ldapkio.desktop
+--- kdepimlibs-4.3.4/kabc/plugins/ldapkio/ldapkio.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kabc/plugins/ldapkio/ldapkio.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=LDAP
+ Name[be]=LDAP
+ Name[ca]=LDAP
++Name[ca@valencia]=LDAP
+ Name[cs]=LDAP
+ Name[da]=LDAP
+ Name[de]=LDAP
+@@ -46,6 +47,7 @@
+ Name[zh_TW]=LDAP
+ Comment=Provides access to contacts stored on a LDAP directory server
+ Comment[ca]=Proporciona l'accés als contactes emmagatzemats en un servidor de directori LDAP
++Comment[ca@valencia]=Proporciona l'accés als contactes emmagatzemats en un servidor de directori LDAP
+ Comment[cs]=Poskytuje přístup ke kontaktům uloženým v adresářovém serveru LDAP
+ Comment[da]=Giver adgang til kontakter lagret på en LDAP directory-server
+ Comment[de]=Ermöglicht Zugriff auf Kontakte, die auf einem LDAP-Server gespeichert sind.
+@@ -75,7 +77,7 @@
+ Comment[sr@latin]=Pruža pristup kontaktima skladištenim na serveru LDAP imenika
+ Comment[sv]=Ger tillgång till kontakter lagrade på en LDAP-katalogserver
+ Comment[tr]=Bir LDAP dizin sunucusunda depolanmış kişilere erişim sağlar
+-Comment[uk]=Надає доступ до контактів, які зберігаються на сервері каталогів LDAP
++Comment[uk]=Надає доступ до записів контактів, які зберігаються на сервері каталогів LDAP
+ Comment[x-test]=xxProvides access to contacts stored on a LDAP directory serverxx
+ Comment[zh_CN]=提供对被存储在 LDAP 目录服务器上的联系人的访问支持
+ Comment[zh_TW]=提供存取儲存在 LDAP 目錄伺服器上的聯絡人的功能
+diff -Nur kdepimlibs-4.3.4/kabc/plugins/ldapkio/resourceldapkio.cpp kdepimlibs-4.3.5/kabc/plugins/ldapkio/resourceldapkio.cpp
+--- kdepimlibs-4.3.4/kabc/plugins/ldapkio/resourceldapkio.cpp	2009-02-18 17:28:32.000000000 +0100
++++ kdepimlibs-4.3.5/kabc/plugins/ldapkio/resourceldapkio.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -216,7 +216,9 @@
+     if ( mod ) {
+       tmp += KLDAP::Ldif::assembleLine( QLatin1String( "replace" ), attr ) + '\n';
+     }
+-    tmp += KLDAP::Ldif::assembleLine( attr, value ) + '\n';
++    if ( !value.isEmpty() ) {
++      tmp += KLDAP::Ldif::assembleLine( attr, value ) + '\n';
++    }
+     if ( mod ) {
+       tmp += "-\n";
+     }
+diff -Nur kdepimlibs-4.3.4/kabc/plugins/net/net.desktop kdepimlibs-4.3.5/kabc/plugins/net/net.desktop
+--- kdepimlibs-4.3.4/kabc/plugins/net/net.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kabc/plugins/net/net.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=Network
+ Name[be]=Сетка
+ Name[ca]=Xarxa
++Name[ca@valencia]=Xarxa
+ Name[cs]=Síť
+ Name[da]=Netværk
+ Name[de]=Netzwerk
+@@ -46,6 +47,7 @@
+ Name[zh_TW]=網路
+ Comment=Provides access to contacts in remote files using KDE's network framework KIO. Supports standard VCard files and other formats depending on available plugins.
+ Comment[ca]=Proporciona l'accés als contactes en fitxers remots usant la infraestructura KIO de xarxa del KDE. Accepta els fitxers estàndard VCard i altres formats, depenent dels connectors disponibles.
++Comment[ca@valencia]=Proporciona l'accés als contactes en fitxers remots usant la infraestructura KIO de xarxa del KDE. Accepta els fitxers estàndard VCard i altres formats, depenent dels connectors disponibles.
+ Comment[cs]=Poskytuje přístup ke vzdáleným kontaktům pomocí síťového frameworku KDE KIO. Podporuje standardní soubory s vizitkou a jiným formátům podle dostupných modulů.
+ Comment[da]=Giver adgang til kontakter i eksterne filer med brug af KDE's netværks-framework KIO. Understøtter standard VCard-filer og andre formater afhængigt af tilgængelige plugins.
+ Comment[de]=Ermöglicht Zugriff auf Kontakte in entfernten Dateien durch das KIO-Netzwerksystem von KDE. Unterstützt Standard-VCard-Dateien und andere Formate abhängig von den verfügbaren Modulen.
+diff -Nur kdepimlibs-4.3.4/kcal/incidencebase.cpp kdepimlibs-4.3.5/kcal/incidencebase.cpp
+--- kdepimlibs-4.3.4/kcal/incidencebase.cpp	2009-03-27 15:46:12.000000000 +0100
++++ kdepimlibs-4.3.5/kcal/incidencebase.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -477,7 +477,9 @@
+     d->mUpdatedPending = true;
+   } else {
+     foreach ( IncidenceObserver *o, d->mObservers ) {
+-      o->incidenceUpdated( this );
++      if ( o ) {
++        o->incidenceUpdated( this );
++      }
+     }
+   }
+ }
+diff -Nur kdepimlibs-4.3.4/kcal/kcal_manager.desktop kdepimlibs-4.3.5/kcal/kcal_manager.desktop
+--- kdepimlibs-4.3.4/kcal/kcal_manager.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kcal/kcal_manager.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -3,6 +3,7 @@
+ Name=Calendar
+ Name[be]=Каляндар
+ Name[ca]=Calendari
++Name[ca@valencia]=Calendari
+ Name[cs]=Kalendář
+ Name[da]=Kalender
+ Name[de]=Kalender
+diff -Nur kdepimlibs-4.3.4/kcal/local.desktop kdepimlibs-4.3.5/kcal/local.desktop
+--- kdepimlibs-4.3.4/kcal/local.desktop	2009-11-27 14:00:40.000000000 +0100
++++ kdepimlibs-4.3.5/kcal/local.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=Calendar in Local File
+ Name[be]=Каляндар у мясцовым файлу
+ Name[ca]=Calendari en un fitxer local
++Name[ca@valencia]=Calendari en un fitxer local
+ Name[cs]=Kalendář v místním souboru
+ Name[da]=Kalender i lokal fil
+ Name[de]=Kalender in lokaler Datei
+@@ -44,6 +45,7 @@
+ Name[zh_TW]=本地端檔案裡的行事曆
+ Comment=Provides access to a calendar stored in a single local file
+ Comment[ca]=Proporciona l'accés a un calendari emmagatzemat en un fitxer local individual
++Comment[ca@valencia]=Proporciona l'accés a un calendari emmagatzemat en un fitxer local individual
+ Comment[cs]=Poskytuje přístup ke kalendáři uloženém v jednom lokálním souboru
+ Comment[da]=Giver adgang til en kalender lagret i en enkelt lokal fil
+ Comment[de]=Ermöglicht Zugriff auf einen Kalender, der in einer einzigen Datei lokal gespeichert ist
+diff -Nur kdepimlibs-4.3.4/kcal/localdir.desktop kdepimlibs-4.3.5/kcal/localdir.desktop
+--- kdepimlibs-4.3.4/kcal/localdir.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kcal/localdir.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -2,6 +2,7 @@
+ Name=Calendar in Local Directory
+ Name[be]=Каляндар у мясцовай тэчцы
+ Name[ca]=Calendari en un directori local
++Name[ca@valencia]=Calendari en un directori local
+ Name[cs]=Kalendář v místním adresáři
+ Name[da]=Kalender i lokal mappe
+ Name[de]=Kalender in lokalem Ordner
+@@ -44,6 +45,7 @@
+ Name[zh_TW]=本地端目錄裡的行事曆
+ Comment=Provides access to calendar items, each stored in a single file, in a given directory
+ Comment[ca]=Proporciona l'accés als elements d'un calendari, cada un emmagatzemat en un fitxer individual, en un directori donat
++Comment[ca@valencia]=Proporciona l'accés als elements d'un calendari, cada un emmagatzemat en un fitxer individual, en un directori donat
+ Comment[cs]=Poskytuje přístup k položkám kalendáře, každé uložené v jednom souboru v daném adresáři
+ Comment[da]=Giver adgang til kalenderelementer, hver lagret i en enkelt fil, i en given mappe
+ Comment[de]=Ermöglicht Zugriff auf Kalender, die jeweils in einzelnen Dateien in einem vorgegebenen Ordner gespeichert sind
+diff -Nur kdepimlibs-4.3.4/kholidays/holidays/holiday_br kdepimlibs-4.3.5/kholidays/holidays/holiday_br
+--- kdepimlibs-4.3.4/kholidays/holidays/holiday_br	2009-02-04 19:17:34.000000000 +0100
++++ kdepimlibs-4.3.5/kholidays/holidays/holiday_br	2010-01-21 21:47:45.000000000 +0100
+@@ -1,8 +1,8 @@
+ :
+ : Brazilian holiday file.
+ :
+-: Author: Juliano Ferraz Ravasi <dev@juliano.info>
+-: Version: 1 - 1 Oct 2006
++: Author: Juliano F. Ravasi <dev@juliano.info>
++: Version: 2 - 22 Dec 2009
+ :
+ : Released under the General Public License
+ :
+@@ -16,6 +16,7 @@
+ small weekend "Independência do Brasil"			on september 7
+ small weekend "Proclamação da República"		on november 15
+ 
++
+ : Feriados e datas comemorativas religiosos (Religious holidays)
+ :::
+ 
+@@ -23,7 +24,7 @@
+ small weekend "Carnaval"				on easter minus 48 days
+ small weekend "Carnaval"				on easter minus 47 days
+ small         "Cinzas"					on easter minus 46 days
+-small         "Paixão de Cristo"			on easter minus 2 days
++small weekend "Paixão de Cristo"			on easter minus 2 days
+ small weekend "Páscoa"					on easter
+ small weekend "Corpus Christi"				on easter plus 60 days
+ small weekend "Nossa Senhora Aparecida"			on october 12
+@@ -31,6 +32,7 @@
+ small weekend "Finados"					on november 2
+ small weekend "Natal"					on december 25
+ 
++
+ : Estações do ano (Seasons)
+ :::
+ 
+@@ -39,6 +41,7 @@
+ small green   "Início da Primavera"			on september 22
+ small green   "Início do Verão"				on december 22
+ 
++
+ : Datas comemorativas mundiais (International commemmorative dates)
+ :::
+ 
+@@ -72,6 +75,7 @@
+ :small         "Dia da Declaração dos Direitos do Homem"	on december 10
+ small         "Reveillon"				on december 31
+ 
++
+ : Outras datas comemorativas (Other commemorative dates)
+ :::
+ 
+@@ -186,7 +190,7 @@
+ :small         "Dia do Comércio"			on october 30
+ :small         "Dia do Cinema Brasileiro"		on november 5
+ :small         "Dia da Bandeira"			on november 19
+-:small         "Dia da Consciência Negra"		on november 20
++small         "Dia da Consciência Negra"		on november 20
+ :small         "Dia do Teólogo"				on november 30
+ :small         "Dia da Reforma Agrária"			on november 30
+ :small         "Dia da Astronomia"			on december 2
+@@ -196,6 +200,7 @@
+ :small         "Dia do Engenheiro"			on december 11
+ :small         "Dia do Arquiteto"			on december 11
+ 
++
+ : Datas históricas
+ :::
+ 
+@@ -205,34 +210,134 @@
+ small         "Golpe Militar, 1964"			on march 31
+ small         "Chegada do Homem à Lua, 1969"		on june 20
+ small         "Descobrimento da América, 1492"		on october 12
++small         "Morte de Zumbi dos Palmares, 1695"	on november 20
++
+ 
+-: Datas comemorativas de estados e cidades
++: Feriados e datas comemorativas estaduais
+ :::
+ 
+-:small         "Aniversário de Belém"			on january 12
+-:small         "Aniversário da Cidade de São Paulo"	on january 25
++:: Acre
++:small weekend "Dia do evangélico"			on january 23
++:small weekend "Aniversário de Acre"			on june 15
++:small weekend "Início da Revolução Acreana"		on august 6
++:small weekend "Dia da Amazônia"			on september 5
++:small weekend "Assinatura do Tratado de Petrópolis"	on november 17
++:small         "Aniversário de Rio Branco"		on december 28
++
++:: Alagoas
++:small weekend "Emancipação política de Alagoas"	on september 16
++:small         "Aniversário de Maceió"			on december 5
++
++:: Amapá
+ :small         "Aniversário de Macapá"			on february 4
+-:small         "Aniversário da Cidade do Rio de Janeiro"	on march 1
+-:small         "Aniversário de Recife"			on march 12
+-:small         "Aniversário de Aracaju"			on march 17
+-:small         "Aniversário de Florianópolis"		on march 23
+-:small         "Aniversário de Porto Alegre"		on march 26
+-:small         "Aniversário de Curitiba"		on march 29
+-:small         "Aniversário de Cuiabá"			on april 8
+-:small         "Aniversário de Fortaleza"		on april 12
++:small weekend "Dia de São José"			on march 19
++:small weekend "Aniversário de Amapá"			on october 5
++
++:: Amazonas
++:small weekend "Dia da Amazônia"			on september 5
++:small         "Aniversário de Manaus"			on october 24
++:small weekend "Dia da Nossa Senhora da Conceição"	on december 8
++
++:: Bahia
++:small         "Aniversário de Salvador"		on march 29
++:small weekend "Independência da Bahia"			on july 2
++
++:: Ceará
++:small         "Aniversário de Fortaleza"		on april 13
++
++:: Distrito Federal
+ :small         "Aniversário de Brasília"		on april 21
+-:small         "Aniversário de Palmas"			on may 20
+-:small         "Aniversário de Boa Vista"		on june 9
+-:small         "Aniversário de Teresina"		on august 16
+-:small         "Aniversário de Campo Grande"		on august 26
++:small weekend "Dia do evangélico"			on november 30
++
++:: Espírito Santo
++:small weekend "Colonização do solo espírito-santaense"	on may 23
+ :small         "Aniversário de Vitória"			on september 8
++:small weekend "Dia do Servidor Público"		on october 28
++
++:: Goiás
++:small         "Aniversário de Goiânia"			on october 24
++:small weekend "Dia do Servidor Público"		on october 28
++
++:: Maranhão
++:small weekend "Adesão do Maranhão à Independência"	on july 28
+ :small         "Aniversário de São Luís"		on september 8
+-:small         "Aniversário de Maceió"			on december 5
++:small weekend "Dia de Nossa Senhora da Conceição"	on december 8
++
++:: Mato Grosso
++:small         "Aniversário de Cuiabá"			on april 8
++
++:: Mato Grosso do Sul
++:small         "Aniversário de Campo Grande"		on august 26
++:small weekend "Criação do estado de Mato Grosso do Sul"	on october 11
++
++:: Minas Gerais
+ :small         "Aniversário de Belo Horizonte"		on december 12
+-:small         "Aniversário de Rio Branco"		on december 28
++
++:: Pará
++:small         "Aniversário de Belém"			on january 12
++:small weekend "Adesão do Grão-Pará à Independência do Brasil"	on august 15
++:small weekend "Dia da Nossa Senhora da Conceição"	on december 8
++
++:: Paraíba
++:small         "Aniversário de João Pessoa"		on august 5
++:small weekend "Emancipação política da Paraíba"	on august 5
++
++:: Paraná
++:small         "Aniversário de Curitiba"		on march 29
++:small weekend "Emancipação política do Paraná"		on december 19
++
++:: Pernambuco
++:small weekend "Revolução Pernambucana (1817)"		on march 6
++:small         "Aniversário de Recife"			on march 12
++
++:: Piauí
++:small weekend "Dia da Batalha de Jenipapo"		on march 13
++:small         "Aniversário de Teresina"		on august 16
++:small weekend "Dia de Piauí"				on october 19
++
++:: Rio de Janeiro
++:small         "Aniversário da Cidade do Rio de Janeiro"	on march 1
++:small weekend "Dia de São Jorge"			on april 23
++:small weekend "Dia do Comércio"			on october 15
++
++:: Rio Grande do Norte
++:small weekend "Dia de São Pedro"			on june 29
++:small weekend "Mártires de Cunhaú e Uruaçu"		on october 3
++:small         "Aniversário da Cidade de Natal"		on december 25
++
++:: Rio Grande do Sul
++:small         "Aniversário de Porto Alegre"		on march 26
++:small weekend "Revolução Farroupilha"			on september 20
++
++:: Rondônia
++:small weekend "Criação do estado de Rondônia"		on january 4
++:small weekend "Dia do Evangélico"			on june 18
++:small         "Aniversário de Porto Velho"		on october 2
++
++:: Roraima
++:small         "Aniversário de Boa Vista"		on june 9
++:small weekend "Criação do estado de Roraima"		on october 5
++
++:: Santa Catarina
++:small         "Aniversário de Florianópolis"		on march 23
++:small weekend "Criação da Capitania de Santa Catarina"	on august 11
++
++:: São Paulo
++small         "Aniversário da Cidade de São Paulo"	on january 25
++small weekend "Revolução Constitucionalista de 1932"	on july 9
++
++:: Sergipe
++:small         "Aniversário de Aracaju"			on march 17
++:small weekend "Autonomia política de Sergipe"		on july 8
++
++:: Tocantins
++:small         "Aniversário de Palmas"			on may 20
++:small weekend "Criação deo estado de Tocantins"	on october 5
++
+ 
+ : Datas comerciais
+ :::
+ 
+ small         "Dia das Mães"				on second sunday in may
+ small         "Dia dos Pais"				on second sunday in august
++
+diff -Nur kdepimlibs-4.3.4/kioslave/imap4/imapparser.cpp kdepimlibs-4.3.5/kioslave/imap4/imapparser.cpp
+--- kdepimlibs-4.3.4/kioslave/imap4/imapparser.cpp	2009-05-14 19:26:01.000000000 +0200
++++ kdepimlibs-4.3.5/kioslave/imap4/imapparser.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -262,13 +262,12 @@
+   }
+   cmd = sendCommand (CommandPtr(new imapCommand ("AUTHENTICATE", firstCommand.toLatin1())));
+ 
+-  while ( true )
+-  {
++  int pl = 0;
++  while ( pl != -1 && !cmd->isComplete () ) {
+     //read the next line
+-    while (parseLoop() == 0) {
++    while ( ( pl = parseLoop() ) == 0) {
+       ;
+     }
+-    if ( cmd->isComplete() ) break;
+ 
+     if (!continuation.isEmpty())
+     {
+diff -Nur kdepimlibs-4.3.4/kioslave/nntp/nntp.cpp kdepimlibs-4.3.5/kioslave/nntp/nntp.cpp
+--- kdepimlibs-4.3.4/kioslave/nntp/nntp.cpp	2009-06-23 13:14:08.000000000 +0200
++++ kdepimlibs-4.3.5/kioslave/nntp/nntp.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -98,9 +98,9 @@
+   QString path = QDir::cleanPath(url.path());
+ 
+   // path should be like: /group/<msg_id> or /group/<serial number>
+-  if ( path.startsWith( QDir::separator() ) )
++  if ( path.startsWith( '/' ) )
+     path.remove( 0, 1 );
+-  int pos = path.indexOf( QDir::separator() );
++  int pos = path.indexOf( '/' );
+   QString group;
+   QString msg_id;
+   if ( pos > 0 ) {
+@@ -517,6 +517,11 @@
+   if (firstSerNum == 0)
+     return true;
+   first = qMax( first, firstSerNum );
++  if ( lastSerNum < first ) { // No need to fetch anything
++    // note: this also ensure that "lastSerNum - first" is not negative
++    // in the next test (in "unsigned long" computation this leads to an overflow
++    return true;
++  }
+   if ( max > 0 && lastSerNum - first > max )
+     first = lastSerNum - max + 1;
+ 
+diff -Nur kdepimlibs-4.3.4/kioslave/sieve/sieve.protocol kdepimlibs-4.3.5/kioslave/sieve/sieve.protocol
+--- kdepimlibs-4.3.4/kioslave/sieve/sieve.protocol	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/kioslave/sieve/sieve.protocol	2010-01-21 21:47:45.000000000 +0100
+@@ -13,6 +13,7 @@
+ Icon=view-filter
+ Description=An ioslave for the Sieve mail filtering protocol
+ Description[ca]=Un «ioslave» pel protocol de filtrat de correu Sieve
++Description[ca@valencia]=Un «ioslave» pel protocol de filtrat de correu Sieve
+ Description[cs]=Protokol pro filtrování pošty Sieve
+ Description[da]=En ioslave til mail-filtreringsprotokollen Sieve
+ Description[de]=Ein Ein-/Ausgabemodul für das Mailfilter-Protokoll Sieve
+diff -Nur kdepimlibs-4.3.4/kmime/kmime_header_parsing.cpp kdepimlibs-4.3.5/kmime/kmime_header_parsing.cpp
+--- kdepimlibs-4.3.4/kmime/kmime_header_parsing.cpp	2009-10-30 13:26:46.000000000 +0100
++++ kdepimlibs-4.3.5/kmime/kmime_header_parsing.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -134,14 +134,14 @@
+ 
+ void Mailbox::setName( const QString &name )
+ {
+-  mDisplayName = name;
++  mDisplayName = removeBidiControlChars( name );
+ }
+ 
+ void Mailbox::setNameFrom7Bit( const QByteArray &name,
+                                const QByteArray &defaultCharset )
+ {
+   QByteArray cs;
+-  mDisplayName = decodeRFC2047String( name, cs, defaultCharset, false );
++  setName( decodeRFC2047String( name, cs, defaultCharset, false ) );
+ }
+ 
+ bool Mailbox::hasAddress() const
+@@ -1189,7 +1189,9 @@
+     return false;
+   }
+ 
+-  result.displayName = maybeDisplayName;
++  // KDE5 TODO: Don't expose displayName as public, but rather add setter for it that
++  //            automatically calls removeBidiControlChars
++  result.displayName = removeBidiControlChars( maybeDisplayName );
+ 
+   // get obs-mbox-list (may contain empty entries):
+   scursor++;
+diff -Nur kdepimlibs-4.3.4/kmime/kmime_headers.cpp kdepimlibs-4.3.5/kmime/kmime_headers.cpp
+--- kdepimlibs-4.3.4/kmime/kmime_headers.cpp	2009-04-28 15:45:50.000000000 +0200
++++ kdepimlibs-4.3.5/kmime/kmime_headers.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -1411,7 +1411,7 @@
+       return true;
+     }
+     if ( qstrnicmp( "nobody", scursor, 6 ) == 0 ) {
+-      d->alwaysCopy = true;
++      d->neverCopy = true;
+       return true;
+     }
+   }
+diff -Nur kdepimlibs-4.3.4/kmime/kmime_util.cpp kdepimlibs-4.3.5/kmime/kmime_util.cpp
+--- kdepimlibs-4.3.4/kmime/kmime_util.cpp	2008-09-03 13:24:15.000000000 +0200
++++ kdepimlibs-4.3.5/kmime/kmime_util.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -31,6 +31,7 @@
+ #include <klocale.h>
+ #include <kcharsets.h>
+ #include <kcodecs.h>
++#include <kdebug.h>
+ 
+ #include <QtCore/QList>
+ #include <QtCore/QString>
+@@ -511,4 +512,18 @@
+   }
+ }
+ 
++QString removeBidiControlChars( const QString &input )
++{
++  const int LRO = 0x202D;
++  const int RLO = 0x202E;
++  const int LRE = 0x202A;
++  const int RLE = 0x202B;
++  QString result = input;
++  result.remove( LRO );
++  result.remove( RLO );
++  result.remove( LRE );
++  result.remove( RLE );
++  return result;
++}
++
+ } // namespace KMime
+diff -Nur kdepimlibs-4.3.4/kmime/kmime_util.h kdepimlibs-4.3.5/kmime/kmime_util.h
+--- kdepimlibs-4.3.4/kmime/kmime_util.h	2009-02-26 10:11:33.000000000 +0100
++++ kdepimlibs-4.3.5/kmime/kmime_util.h	2010-01-21 21:47:45.000000000 +0100
+@@ -243,6 +243,14 @@
+ */
+ KMIME_EXPORT extern void addQuotes( QByteArray &str, bool forceQuotes );
+ 
++/**
++ * Similar to the above function. Instead of trying to balance the Bidi chars, it outright
++ * removes them from the string.
++ * 
++ * Reason: KHTML seems to ignore the PDF character, so adding them doesn't fix things :(
++ */
++KMIME_EXPORT QString removeBidiControlChars( const QString &input );
++
+ } // namespace KMime
+ 
+ #endif /* __KMIME_UTIL_H__ */
+diff -Nur kdepimlibs-4.3.4/kmime/tests/kmime_message_test.cpp kdepimlibs-4.3.5/kmime/tests/kmime_message_test.cpp
+--- kdepimlibs-4.3.4/kmime/tests/kmime_message_test.cpp	2009-04-15 12:25:08.000000000 +0200
++++ kdepimlibs-4.3.5/kmime/tests/kmime_message_test.cpp	2010-01-21 21:47:45.000000000 +0100
+@@ -171,3 +171,32 @@
+   QCOMPARE( body, QString::fromAscii( msg2.body() ) );
+ }
+ 
++void MessageTest::testBidiSpoofing()
++{
++  const QString RLO( QChar( 0x202E ) );
++  const QString PDF( QChar( 0x202C ) );
++
++  const QByteArray senderAndRLO =
++      encodeRFC2047String( "\"Sender" + RLO + "\" <sender@test.org>", "utf-8" );
++
++  // The display name of the "From" has an RLO, make sure the KMime parser balances it
++  QByteArray data =
++    "From: " + senderAndRLO + "\n"
++    "\n"
++    "Body";
++
++  KMime::Message msg;
++  msg.setContent( data );
++  msg.parse();
++
++  // Test adjusted for taking into account that KMIME now removes bidi control chars
++  // instead of adding PDF chars, because of broken KHTML.
++  //const QString expectedDisplayName = "\"Sender" + RLO + PDF + "\"";
++  const QString expectedDisplayName = "\"Sender\"";
++  const QString expectedMailbox = expectedDisplayName + " <sender@test.org>";
++  QCOMPARE( msg.from()->addresses().count(), 1 );
++  QCOMPARE( msg.from()->asUnicodeString(), expectedMailbox );
++  QCOMPARE( msg.from()->displayNames().first(), expectedDisplayName );
++  QCOMPARE( msg.from()->mailboxes().first().name(), expectedDisplayName );
++  QCOMPARE( msg.from()->mailboxes().first().address().data(), "sender@test.org" );
++}
+diff -Nur kdepimlibs-4.3.4/kmime/tests/kmime_message_test.h kdepimlibs-4.3.5/kmime/tests/kmime_message_test.h
+--- kdepimlibs-4.3.4/kmime/tests/kmime_message_test.h	2009-04-15 12:25:08.000000000 +0200
++++ kdepimlibs-4.3.5/kmime/tests/kmime_message_test.h	2010-01-21 21:47:45.000000000 +0100
+@@ -30,6 +30,7 @@
+     void testBrunosMultiAssembleBug();
+     void testWillsAndTillsCrash();
+     void missingHeadersTest();
++    void testBidiSpoofing();
+ };
+ 
+ 
+diff -Nur kdepimlibs-4.3.4/kpimutils/email.cpp kdepimlibs-4.3.5/kpimutils/email.cpp
+--- kdepimlibs-4.3.4/kpimutils/email.cpp	2009-08-28 05:47:35.000000000 +0200
++++ kdepimlibs-4.3.5/kpimutils/email.cpp	2010-01-21 21:47:44.000000000 +0100
+@@ -896,19 +896,20 @@
+                                       const QString &addrSpec,
+                                       const QString &comment )
+ {
+-  if ( displayName.isEmpty() && comment.isEmpty() ) {
++  const QString realDisplayName = KMime::removeBidiControlChars( displayName );
++  if ( realDisplayName.isEmpty() && comment.isEmpty() ) {
+     return addrSpec;
+   } else if ( comment.isEmpty() ) {
+-    if ( !displayName.startsWith( '\"' ) ) {
+-      return quoteNameIfNecessary( displayName ) + " <" + addrSpec + '>';
++    if ( !realDisplayName.startsWith( '\"' ) ) {
++      return quoteNameIfNecessary( realDisplayName ) + " <" + addrSpec + '>';
+     } else {
+-      return displayName + " <" + addrSpec + '>';
++      return realDisplayName + " <" + addrSpec + '>';
+     }
+-  } else if ( displayName.isEmpty() ) {
++  } else if ( realDisplayName.isEmpty() ) {
+     QString commentStr = comment;
+     return quoteNameIfNecessary( commentStr ) + " <" + addrSpec + '>';
+   } else {
+-    return displayName + " (" + comment + ") <" + addrSpec + '>';
++    return realDisplayName + " (" + comment + ") <" + addrSpec + '>';
+   }
+ }
+ 
+diff -Nur kdepimlibs-4.3.4/kresources/kresources.desktop kdepimlibs-4.3.5/kresources/kresources.desktop
+--- kdepimlibs-4.3.4/kresources/kresources.desktop	2009-11-27 14:00:40.000000000 +0100
++++ kdepimlibs-4.3.5/kresources/kresources.desktop	2010-01-21 21:47:44.000000000 +0100
+@@ -11,6 +11,7 @@
+ Name=KDE Resources
+ Name[be]=Рэсурсы KDE
+ Name[ca]=Recursos del KDE
++Name[ca@valencia]=Recursos del KDE
+ Name[cs]=Zdroje KDE
+ Name[da]=KDE-ressourcer
+ Name[de]=KDE-Ressourcen
+@@ -55,6 +56,7 @@
+ Comment=Configure KDE Resources
+ Comment[be]=Настаўленні рэсурсаў KDE
+ Comment[ca]=Configura els recursos del KDE
++Comment[ca@valencia]=Configura els recursos del KDE
+ Comment[cs]=Nastavení zdrojů KDE
+ Comment[da]=Indstil KDE-ressourcer
+ Comment[de]=KDE-Ressourcen einrichten
+diff -Nur kdepimlibs-4.3.4/kresources/kresources_manager.desktop kdepimlibs-4.3.5/kresources/kresources_manager.desktop
+--- kdepimlibs-4.3.4/kresources/kresources_manager.desktop	2009-10-02 10:18:19.000000000 +0200
++++ kdepimlibs-4.3.5/kresources/kresources_manager.desktop	2010-01-21 21:47:44.000000000 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Name=KResources Manager
+ Name[ca]=Gestor del KResources
++Name[ca@valencia]=Gestor del KResources
+ Name[cs]=KResource správce
+ Name[da]=KResources-håndtering
+ Name[de]=Ressourcenverwaltung
+@@ -45,6 +46,7 @@
+ X-KDE-ServiceType=KResources/Manager
+ Comment=KResources Manager
+ Comment[ca]=Gestor del KResources
++Comment[ca@valencia]=Gestor del KResources
+ Comment[cs]=KResource správce
+ Comment[da]=KResources-håndtering
+ Comment[de]=Ressourcenverwaltung
+diff -Nur kdepimlibs-4.3.4/kresources/kresources_plugin.desktop kdepimlibs-4.3.5/kresources/kresources_plugin.desktop
+--- kdepimlibs-4.3.4/kresources/kresources_plugin.desktop	2009-10-02 10:18:19.000000000 +0200
++++ kdepimlibs-4.3.5/kresources/kresources_plugin.desktop	2010-01-21 21:47:44.000000000 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Name=KResources Plugin
+ Name[ca]=Connector pel KResources
++Name[ca@valencia]=Connector pel KResources
+ Name[cs]=Modul rámce KResource
+ Name[da]=KResources-plugin
+ Name[de]=KRessourcen-Modul
+@@ -37,7 +38,7 @@
+ Name[sv]=Insticksprogram för resurser
+ Name[th]=โปรแกรมเสริมการจัดการทรัพยากร K
+ Name[tr]=KResources Eklentisi
+-Name[uk]=Втулок KResourc-ів
++Name[uk]=Додаток до KResources
+ Name[x-test]=xxKResources Pluginxx
+ Name[zh_CN]=KResource 插件
+ Name[zh_TW]=KResources 外掛程式
+@@ -45,6 +46,7 @@
+ X-KDE-ServiceType=KResources/Plugin
+ Comment=KResources Framework Plugin
+ Comment[ca]=Connector del marc de treball pel KResources
++Comment[ca@valencia]=Connector del marc de treball pel KResources
+ Comment[cs]=Modul rámce KResource
+ Comment[da]=KResource-strukturplugin
+ Comment[de]=Modul für KRessourcen-Grundgerüst
+@@ -80,7 +82,7 @@
+ Comment[sv]=Insticksprogram för resursramverk
+ Comment[th]=โปรแกรมเสริมเฟรมเวิร์กการจัดการทรัพยากร K
+ Comment[tr]=KResources Çalışma Alanı Eklentisi
+-Comment[uk]=Втулок платформи KResource
++Comment[uk]=Додаток до платформи KResources
+ Comment[x-test]=xxKResources Framework Pluginxx
+ Comment[zh_CN]=KResource 框架插件
+ Comment[zh_TW]=KResources 框架外掛程式
+diff -Nur kdepimlibs-4.3.4/mailtransport/kcm_mailtransport.desktop kdepimlibs-4.3.5/mailtransport/kcm_mailtransport.desktop
+--- kdepimlibs-4.3.4/mailtransport/kcm_mailtransport.desktop	2009-10-02 10:18:20.000000000 +0200
++++ kdepimlibs-4.3.5/mailtransport/kcm_mailtransport.desktop	2010-01-21 21:47:45.000000000 +0100
+@@ -14,6 +14,7 @@
+ Name=Mail Transport
+ Name[be]=Паштовы транспарт
+ Name[ca]=Transport de correu
++Name[ca@valencia]=Transport de correu
+ Name[cs]=Přenos pošty
+ Name[da]=Mail-transport
+ Name[de]=Versandart
+diff -Nur kdepimlibs-4.3.4/syndication/rss2/enclosure.cpp kdepimlibs-4.3.5/syndication/rss2/enclosure.cpp
+--- kdepimlibs-4.3.4/syndication/rss2/enclosure.cpp	2008-01-05 00:53:08.000000000 +0100
++++ kdepimlibs-4.3.5/syndication/rss2/enclosure.cpp	2010-01-21 21:47:44.000000000 +0100
+@@ -43,13 +43,13 @@
+ 
+ int Enclosure::length() const
+ {
+-    int length = -1;
++    int length = 0;
+ 
+     if (hasAttribute(QString::fromUtf8("length")))
+     {
+         bool ok;
+         int c = attribute(QString::fromUtf8("length")).toInt(&ok);
+-        length = ok ? c : -1;
++        length = ok ? c : 0;
+     }
+     return length;
+ }
